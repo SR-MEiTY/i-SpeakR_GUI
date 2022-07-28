@@ -1,0 +1,81 @@
+<html lang="en">
+    
+    <head>
+        <title>Parameter selection</title>
+        <link rel="stylesheet" href={{style}}>
+        <link rel="stylesheet" href="/static/popup.css">
+        
+        <script>
+        var auto_refresh = setInterval(function() { submitform(); }, 30000);
+        
+        function submitform()
+        {
+            focus_output_div();
+            document.getElementById("refresh").submit();
+            var mydiv = $("#output_display");
+            mydiv.scrollTop(mydiv.prop("scrollHeight"));
+        }
+        
+        function focus_output_div()
+        {
+            var objDiv = document.getElementById("output_display");
+            objDiv.scrollTop = objDiv.scrollHeight;
+        }
+        function showPopUp() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+        }
+        </script>
+
+    </head>
+
+    {% if (error_msg) %}
+    <body onload="showPopUp();focus_output_div();">
+    {% else %}
+    <body onload="focus_output_div();">
+    {% endif %}
+        <div class="top_panel">
+            i-SpeakR: Program running
+        </div>
+
+        <div class="menu_panel">
+            <div class="menu_item" onclick="document.getElementById('landing_page').submit()" align="center">
+                Landing Page
+                <form action="/" method="GET" id="landing_page" class="menu_form">
+                    <!--<input type="submit" value="Landing Page">-->
+                </form>
+            </div>
+            &emsp;
+            {% if (not error_msg) %}
+            <div class="menu_item" onclick="document.getElementById('refresh').submit()" align="center">
+                Refresh
+                <form action="status.html" method="GET" id="refresh" class="menu_form">
+                    <!--<input type="submit" value="Reload page">-->
+                </form>
+            </div>
+            {% endif %}
+            &emsp;
+            {% if (download_result) %}
+            <div class="menu_item" align="center">
+                <a href={{download_result}} style="text-decoration: none; color: white; font-weight: bold;">Download Results</a>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="main_body">
+            {% if (error_msg) %}
+            <div class="popup" onload="showPopUp()">
+                <span class="popuptext" id="myPopup">Error! {{error_msg}}</span>
+            </div> 
+            {% endif %}
+            {% if (output) %}
+            <div class="output_box" id="output_display">
+                <pre>
+                {{output}}
+                </pre>
+            </div>
+            {% endif %}        
+        </div>
+        
+    </body>
+</html>

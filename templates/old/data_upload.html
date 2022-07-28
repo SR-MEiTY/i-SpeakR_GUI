@@ -1,0 +1,52 @@
+<html lang="en">
+    <head>
+        <title>Parameter selection</title>
+        <link rel="stylesheet" href={{style}}>
+    </head>
+
+    <body>
+        <div class="top_panel">
+            i-SpeakR: Dataset upload
+        </div>
+
+        <div class="menu_panel">
+            <div class="menu_item" onclick="document.getElementById('landing_page').submit()" align="center">
+                Landing Page
+                <form action="/" method="GET" id="landing_page" class="menu_form">
+                    <!--<input type="submit" value="Landing Page">-->
+                </form>
+            </div>
+            &emsp;
+            {% if (not error_msg) %}
+            <div class="menu_item" onclick="document.getElementById('refresh').submit()" align="center">
+                Results Page
+                <form action="status.html" method="GET" id="refresh" class="menu_form">
+                    <!--<input type="submit" value="Reload page">-->
+                </form>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="main_body">            
+            <form action="uploader.html" method="POST" enctype="multipart/form-data">
+                <table>
+                <tr><td>
+                    <label for="available_datasets">Available datasets:</label>
+                    <select id="available_datasets" name="available_datasets">
+                    {% for set in datasets %}
+                    <option value={{set}}>{{set}}</option>
+                    {% endfor %}
+                    <option value="other">Other</option>
+                    </select>
+                </td></tr>
+                <tr><td>
+                    <input type="file" name="file[]"  webkitdirectory="" directory="" multiple/>
+                </td></tr>
+                <tr><td>
+                    <input type="submit"/>
+                </td></tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

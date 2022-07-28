@@ -1,0 +1,104 @@
+.handson_width{
+	width: 90vw !important;
+	margin: auto;
+}
+.tier2_menu_pane{
+	height: 75px;
+	margin: 10px auto 10px auto;
+	align-items: center;
+	justify-content: flex-start;
+}
+.tier2_menu_items{
+	display: flex;
+	align-items: center;
+	height: 70px;
+	border: 3px solid transparent;
+	border-bottom: 3px solid rgba(165, 94, 219, 1);
+	border-top-right-radius: 15px;
+	border-top-left-radius: 15px;
+	padding-left:10px;
+	padding-right:10px;
+}
+.tier2_menu_items:hover{
+	border-top: 3px solid rgba(165, 94, 219, 1);
+	border-right: 3px solid rgba(165, 94, 219, 1);
+	border-left: 3px solid rgba(165, 94, 219, 1);
+	border-bottom: 3px solid transparent;
+}
+.tier2_selected_menu{
+	border-bottom: 3px solid transparent;
+	background-color: rgba(165, 94, 219, 1);
+	color: white;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.tier2_empty_menu_item{
+	display: flex;
+	height: 35px;
+	width: 75px;
+}
+.handson_dashboard{
+	margin: 0px auto 30px auto;
+	box-shadow: 5px 5px 25px 25px rgba(165, 94, 219, 0.1);
+}
+.row{
+	width: 90vw;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.column{
+	display: flex;
+	align-items: center;
+}
+.click_button{
+	width: 200px;
+	height: 50px;
+	font-weight: 900;
+	font-size: 20px;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	box-shadow: 1px 1px 3px 1px rgba(115, 201, 107, 0.7);
+	background-color: rgba(115, 201, 107, 1);
+	color: white;
+	cursor: pointer;
+}
+.click_button:hover{
+	box-shadow: 3px 3px 5px 3px rgba(115, 201, 107, 0.7);
+	font-weight: 900;
+	color: white;
+	background-color: rgba(115, 201, 107, 1);
+}
+select{
+	width: 250px;
+	padding: 5px;
+	border: 1px solid transparent;
+	box-shadow: 1px 1px 3px 1px rgba(165, 94, 219, 0.5);
+	border-radius: 5px;
+}
+.file_upload{
+	width: 250px;
+	padding: 5px;
+	border: 1px solid transparent;
+	box-shadow: 1px 1px 3px 1px rgba(165, 94, 219, 0.5);
+	border-radius: 5px;
+}
+input{
+	text-decoration: none;
+}
+.results_tab{
+	width: 200px;
+	height: 50px;
+	font-weight: 900;
+	font-size: 20px;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.results_tab:hover{
+	box-shadow: 3px 3px 5px 3px rgba(115, 201, 107, 0.7);
+}
+.sub_panel{
+	align-items: center;
+	justify-content: flex-start;
+}

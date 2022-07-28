@@ -1,0 +1,166 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,500&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="static/css/base_style.css">
+		<link rel="stylesheet" href="static/css/handson.css">
+		<link rel="stylesheet" href="static/css/popup.css">
+		<link rel="icon" type="image/x-icon" href="static/images/i-SpeakR_icon2.ico">
+		<title>i-SpeakR</title>
+
+		<script>
+		//var auto_refresh = setInterval(function() { submitform(); }, 30000);
+		
+		function submitform()
+		{
+		    focus_output_div();
+		    document.getElementById("refresh").submit();
+		    var mydiv = $("#output_display");
+		    mydiv.scrollTop(mydiv.prop("scrollHeight"));
+		}
+		
+		function focus_output_div()
+		{
+		    var objDiv = document.getElementById("output_display");
+		    objDiv.scrollTop = objDiv.scrollHeight;
+		}
+		function showPopUp() {
+		    var popup = document.getElementById("myPopup");
+		    popup.classList.toggle("show");
+		}
+		</script>
+
+	</head>
+
+	{% if (error_msg) %}
+	<body onload="showPopUp();focus_output_div();" lang="en-IN">
+	{% else %}
+	<body onload="focus_output_div();" lang="en-IN">
+	{% endif %}
+
+		<div class="flex-container title_pane">
+			<img src="static/images/gov-logo-1.png" alt="MeitY, GoI, logo" title="MeitY, GoI">
+			<img src="static/images/i-SpeakR_icon2.bmp" alt="i-SpeakR logo" title="i-SpeakR" height="75px">
+		</div>
+
+		<div class="flex-container menu_pane">
+			<div class="menu_items hyperlink" onclick="window.open('index.html', '_self');">
+				Home
+			</div>
+			&emsp;
+			<div class="menu_items hyperlink" onclick="window.open('about.html', '_self');">
+				About
+			</div>
+			&emsp;
+			<div class="menu_items hyperlink" onclick="window.open('resources.html', '_self');">
+				Resources
+			</div>
+			&emsp;
+			<div class="menu_items hyperlink" onclick="window.open('https://docs.google.com/document/d/1HWLw-77FtyDvZtOyU7r_3uWLRRvLRZIX/edit#', '_self');">
+				I-MSLV Challenge
+			</div>
+			&emsp;
+			<div class="menu_items hyperlink" onclick="window.open('/home/mrinmoy/Documents/Speaker_Recognition_MeitY_Project/Project_Related/DEMO/Speaker_Recognition/home.html', '_self');">
+				Demo
+			</div>
+			&emsp;
+			<div class="menu_items hyperlink selected_menu">
+				Hands-on
+			</div>
+			<div class="empty_menu_item">
+			</div>
+		</div>
+
+		<div class="heading1 handson_width">Hands-On</div>
+
+		<div class="flex-container tier2_menu_pane handson_width">
+			<div class="tier2_menu_items hyperlink" onclick="">
+				Theory
+			</div>
+			&emsp;
+			<div class="tier2_menu_items hyperlink tier2_selected_menu" onclick="">
+				Procedure
+			</div>
+			&emsp;
+			<div class="tier2_menu_items hyperlink" onclick="">
+				Self Evaluation
+			</div>
+			&emsp;
+			<div class="tier2_menu_items hyperlink" onclick="">
+				Feedback
+			</div>
+			&emsp;
+			<div class="tier2_menu_items hyperlink" onclick="">
+				References
+			</div>
+		</div>
+
+
+		<div class="flex-container dashboard handson_dashboard handson_width">
+
+			<div class="content_space">
+				<div class="subsection sub_panel">
+					<form action="/" method="GET" id="landing_page" class="menu_form">
+					    <!--<input type="submit" value="Landing Page">-->
+					</form>
+					<form action="status.html" method="GET" id="refresh" class="menu_form">
+					    <!--<input type="submit" value="Reload page">-->
+					</form>
+
+					&emsp;
+					&emsp;
+					&emsp;
+
+					<img src="static/images/home_icon.png" onclick="document.getElementById('landing_page').submit()" width="30px" class="hyperlink"/>
+					&emsp;
+					&emsp;
+					&emsp;
+
+					{% if (not error_msg) %}
+					<div class="results_tab" onclick="document.getElementById('refresh').submit()">
+					Refresh
+					</div>
+					{% endif %}
+
+					&emsp;
+					&emsp;
+					&emsp;
+
+					{% if (download_result) %}
+					<div class="menu_item" align="center">
+					<a href={{download_result}} style="text-decoration: none; color: white; font-weight: bold;">Download Results</a>
+					</div>
+					{% endif %}
+				</div>
+
+
+				<div class="subsection">
+				            
+					{% if (error_msg) %}
+					<div class="popup" onload="showPopUp()">
+						<span class="popuptext" id="myPopup">Error! {{error_msg}}</span>
+					</div>
+					{% endif %}
+					{% if (output) %}
+					<div class="output_box" id="output_display">
+					<pre>
+					{{output}}
+					</pre>
+					</div>
+					{% endif %}
+				</div>
+
+			</div>
+		</div>
+
+		<div class="flex-container footer">
+			<div>© Designed and maintained by IIT Dharwad.</div>
+		</div>
+
+	</body>
+</html>

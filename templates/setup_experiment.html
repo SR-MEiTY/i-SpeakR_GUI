@@ -1,0 +1,302 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,500&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="static/css/base_style.css">
+		<link rel="stylesheet" href="static/css/handson.css">
+		<link rel="icon" type="image/x-icon" href="static/images/i-SpeakR_icon2.ico">
+		<title>i-SpeakR</title>
+
+		<script>
+		function show_hide_row(){
+		    window.alert(document.getElementById("data_type_id").value);
+		    
+		    if (document.getElementById("data_type_id").value=="specify") {
+		        document.getElementById("csv_selection").style.visibility = "visible";
+		    }
+		    
+		    if (document.getElementById("data_type_id").value=="infer") {
+		        document.getElementById("csv_selection").style.visibility = "hidden";
+		    }
+		}
+		show_hide_row();
+		</script>
+
+	</head>
+
+	<body lang="en-IN">
+
+		<div class="flex-container title_pane">
+			<img src="static/images/gov-logo-1.png" alt="MeitY, GoI, logo" title="MeitY, GoI">
+			<img src="static/images/i-SpeakR_icon2.bmp" alt="i-SpeakR logo" title="i-SpeakR" height="75px">
+		</div>
+
+		<div class="flex-container menu_pane">
+			<div class="menu_items hyperlink" onclick="window.open('index.html', '_self');">
+				Home
+			</div>
+			&emsp;
+			<div class="menu_items hyperlink" onclick="window.open('about.html', '_self');">
+				About
+			</div>
+			&emsp;
+			<div class="menu_items hyperlink" onclick="window.open('resources.html', '_self');">
+				Resources
+			</div>
+			&emsp;
+			<div class="menu_items hyperlink" onclick="window.open('https://docs.google.com/document/d/1HWLw-77FtyDvZtOyU7r_3uWLRRvLRZIX/edit#', '_self');">
+				I-MSLV Challenge
+			</div>
+			&emsp;
+			<div class="menu_items hyperlink" onclick="window.open('/home/mrinmoy/Documents/Speaker_Recognition_MeitY_Project/Project_Related/DEMO/Speaker_Recognition/home.html', '_self');">
+				Demo
+			</div>
+			&emsp;
+			<div class="menu_items hyperlink selected_menu">
+				Hands-on
+			</div>
+			<div class="empty_menu_item">
+			</div>
+		</div>
+
+		<div class="heading1 handson_width">Hands-On</div>
+
+		<div class="flex-container tier2_menu_pane handson_width">
+			<div class="tier2_menu_items hyperlink" onclick="">
+				Theory
+			</div>
+			&emsp;
+			<div class="tier2_menu_items hyperlink tier2_selected_menu" onclick="">
+				Procedure
+			</div>
+			&emsp;
+			<div class="tier2_menu_items hyperlink" onclick="">
+				Self Evaluation
+			</div>
+			&emsp;
+			<div class="tier2_menu_items hyperlink" onclick="">
+				Feedback
+			</div>
+			&emsp;
+			<div class="tier2_menu_items hyperlink" onclick="">
+				References
+			</div>
+		</div>
+
+
+		<div class="flex-container dashboard handson_dashboard handson_width">
+
+			<div class="content_space">
+				<div class="subsection sub_panel">
+					<form action="/" method="GET" id="landing_page" class="menu_form">
+					    <!--<input type="submit" value="Landing Page">-->
+					</form>
+					<form action="status.html" method="GET" id="refresh" class="menu_form">
+					    <!--<input type="submit" value="Reload page">-->
+					</form>
+
+					&emsp;
+					&emsp;
+					&emsp;
+					<img src="static/images/home_icon.png" onclick="document.getElementById('landing_page').submit()" width="30px" class="hyperlink"/>
+					&emsp;
+					&emsp;
+					&emsp;
+					<!--
+					<div class="click_button" onclick="document.getElementById('landing_page').submit()">
+					Landing Page
+					</div>
+					-->
+					{% if (not error_msg) %}
+					<div class="results_tab" onclick="document.getElementById('refresh').submit()">
+					Results Page
+					</div>
+					{% endif %}
+				</div>
+
+
+				<div class="subsection">
+				            
+				    <form method="post" action="parse_parameters.html">
+				    <table>
+				    <tr>
+					<td class="left_cell"><label for="sampling_rate">Sampling rate:</label></td>
+					<td class="right_cell"><input type="number" id="sampling_rate" name="sampling_rate", value="16000"></td>
+				    </tr>
+				    <tr>
+					<td class="left_cell"><label for="n_fft">Number of FFT points:</label></td>
+					<td class="right_cell"><input type="number" id="n_fft" name="n_fft" value="2048"></td>
+				    </tr>
+				    <tr>
+					<td class="left_cell"><label for="frame_size">Frame size (in ms):</label></td>
+					<td class="right_cell"><input type="number" id="frame_size" name="frame_size" value="20"></td>
+				    </tr>
+				    <tr>
+					<td class="left_cell"><label for="frame_shift">Frame shift (in ms):</label></td>
+					<td class="right_cell"><input type="number" id="frame_shift" name="frame_shift" value="10"></td>
+				    </tr>
+				    <tr>
+					<td class="left_cell"><label for="preemphasis">Pre-emphasis:</label></td>
+					<td class="right_cell">
+					<select id="preemphasis" name="preemphasis">
+					<option value="false">False</option>
+					<option value="true" selected>True</option>
+					</select>
+					</td>
+				    </tr>
+				    <tr>
+					<td class="left_cell"><label for="feature_scaling">Feature scaling:</label></td>
+					<td class="right_cell">
+					<select id="feature_scaling" name="feature_scaling">
+					<option value="0" selected>No scaling</option>
+					<option value="1">Only Mean scaling</option>
+					<option value="2">Mean-Variance scaling</option>
+					</select>
+					</td>
+				    </tr>
+				    <tr>
+					<td class="left_cell"><label for="feature_name">Feature name:</label></td>
+					<td class="right_cell">
+					<select id="feature_name" name="feature_name">
+					<option value="MFCC" selected>MFCC</option>
+					</select>
+					</td>
+				    </tr>
+				    <tr>
+					<td class="left_cell"><label for="n_mels">Number of Mel filters:</label></td>
+					<td class="right_cell"><input type="number" id="n_mels" name="n_mels" value="40"></td>
+				    </tr>
+				    <tr>
+					<td class="left_cell"><label for="n_mfcc">Number of MFCC:</label></td>
+					<td class="right_cell"><input type="number" id="n_mfcc" name="n_mfcc" value="13"></td>
+				    </tr>
+				    <tr>
+					<td class="left_cell"><label for="excl_c0">Exclude MFCC c0:</label></td>
+					<td class="right_cell">
+					<select id="excl_c0" name="excl_c0">
+					<option value="false">False</option>
+					<option value="true" selected>True</option>
+					</select>
+					</td>
+				    </tr>
+				    <tr>
+					<td class="left_cell"><label for="compute_delta_feat">Delta features required:</label></td>
+					<td class="right_cell">
+					<select id="compute_delta_feat" name="compute_delta_feat">
+					<option value="false">False</option>
+					<option value="true" selected>True</option>
+					</select>
+					</td>
+				    </tr>
+				    <tr>
+					<td class="left_cell"><label for="delta_win">Delta window size:</label></td>
+					<td class="right_cell"><input type="number" id="delta_win" name="delta_win" value="9"></td>
+				    </tr>
+				    <tr>
+					<td class="left_cell"><label for="model">Model type:</label></td>
+					<td class="right_cell">
+					<select id="model" name="model">
+					<option value="GMM_UBM" selected>GMM UBM</option>
+					</select>
+					</td>
+				    </tr>
+				    <tr>
+					<td class="left_cell"><label for="UBM_ncomp">Number of UBM components:</label></td>
+					<td class="right_cell"><input type="number" id="UBM_ncomp" name="UBM_ncomp" value="512"></td>
+				    </tr>
+				    <tr>
+					<td class="left_cell"><label for="adapt_weight_cov">Adapt weight and covariance:</label></td>
+					<td class="right_cell">
+					<select id="adapt_weight_cov" name="adapt_weight_cov">
+					<option value="false" selected>False</option>
+					<option value="true">True</option>
+					</select>
+					</td>
+				    </tr>
+				    <tr>
+					<td class="left_cell"><label for="covariance_type">Covariance type:</label></td>
+					<td class="right_cell">
+					<select id="covariance_type" name="covariance_type">
+					<option value="full">Full</option>
+					<option value="diag" selected>Diagonal</option>
+					<option value="tied">Tied</option>
+					</select>
+					</td>
+				    </tr>
+				    <tr>
+					<td class="left_cell"><label for="data_path">Dataset selected:</label></td>
+					<td class="right_cell">
+					{{dataset_name}}
+					<input type="hidden" id="data_path" name="data_path" value="{{data_path}}" readonly>
+					<!--<input type="file" webkitdirectory mozdirectory />-->
+					</td>
+				    </tr>
+				    <tr>
+					<td class="left_cell"><label for="data_type">Data type:</label></td>
+					<td class="right_cell">
+					<select id="data_type_id" name="data_type" title="Basic: Separate folders for DEV, ENR and TEST data sets; Advanced: Separate .csv files for DEV, ENR and TEST sets.">
+					    {% for set in data_type %}
+						<option value={{set}} onselect="show_hide_row();">
+						{% if (set=='infer') %}
+						Basic
+						{% else %}
+						Advanced
+						{% endif %}
+						</option>
+					    {% endfor %}
+					</select>
+					</td>
+				    </tr>
+				    <tr id="csv_selection" style="visibility: visible;">
+					<td class="left_cell"><label for="csv_files">Select meta files:</label></td>
+					<td class="right_cell">
+
+					<select id="dev_csv" name="dev_csv">
+					{% for set in dev_sets %}
+					<option value={{set}}>{{set}}</option>
+					{% endfor %}
+					<option selected>--</option>
+					</select>
+
+					<select id="enr_csv" name="enr_csv">
+					{% for set in enr_sets %}
+					<option value={{set}}>{{set}}</option>
+					{% endfor %}
+					<option selected>--</option>
+					</select>
+					
+					<select id="test_csv" name="test_csv">
+					{% for set in test_sets %}
+					<option value={{set}}>{{set}}</option>
+					{% endfor %}
+					<option selected>--</option>
+					</select>
+
+					</td>
+				    </tr>
+				    <tr>
+					<td colspan="2">
+					    <input type="submit" id="submit" name="Submit" value="Run i-SpeakR" class="click_button">
+					</td>
+				    </tr>
+				    </table>
+				    </form>
+
+
+
+				</div>
+
+			</div>
+		</div>
+
+		<div class="flex-container footer">
+			<div>© Designed and maintained by IIT Dharwad.</div>
+		</div>
+
+	</body>
+</html>

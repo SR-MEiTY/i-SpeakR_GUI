@@ -1,0 +1,112 @@
+html, body {
+    height: 95%;
+    width: 95%;
+}
+html {
+    display: table;
+    margin: auto;
+}
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+table{
+    margin: auto;
+    width: 100%;
+}
+tr:hover{
+    background-color: rgba(163, 240, 183, 1);
+}
+td{
+    text-align: center;
+    padding: 2px;
+}
+form {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}
+td input {
+    min-width: 10px;
+    max-width: 100%;
+    width: 100%;
+}
+td{word-wrap: break-word;}
+.top_panel{
+    position: fixed;
+    top: 0%;
+    width: 95%;
+    text-align: center;
+    border: 1px solid black;
+    padding: 5px 0px 5px 0px;
+    margin: auto;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+}
+.menu_panel{
+    position: absolute;
+    top: 7%;
+    width: 95%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgba(242, 213, 247, 0.5);
+    vertical-align: middle;
+}
+.menu_item{
+    height: 100%;
+    padding: 5px;
+    display: inline;
+    vertical-align: middle;
+    background-color: rgba(65, 156, 103, 0.5);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+.menu_item:hover{
+    background-color: rgba(65, 156, 103, 1);
+    cursor: pointer;
+}
+.menu_form{
+    display: inline;
+    vertical-align: middle;
+    padding: 5px;
+    margin: 0 auto; 
+}
+.main_body{
+    position: absolute;
+    top: 15%;
+    width: 95%;
+    text-align: center;
+    padding: 5px;
+    margin: auto;
+}
+.left_box{
+    width: 45%;
+    text-align: center;
+    border-right: 1px solid black;
+    float: left;
+    margin: auto;
+}
+.right_box{
+    width: 54%;
+    text-align: center;
+    border-left: 1px solid black;
+    float: left;
+    margin: auto;
+}
+.output_box{
+    width: 95%;
+    max-width: 800px;
+    height: 500px;
+    margin: auto;
+    border: 1px solid black;
+    overflow-y: scroll;
+    overflow-x: inherit;
+    word-wrap: break-word;
+    text-align: left;
+    background-color: black;
+    color: white;
+}
+.left_cell{width: 60%;}
+.right_cell{width: 40%;}
