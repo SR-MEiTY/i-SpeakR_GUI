@@ -30,7 +30,6 @@
 	background-color: rgba(165, 94, 219, 1);
 	color: white;
 	font-weight: bold;
-	text-transform: uppercase;
 }
 .tier2_empty_menu_item{
 	display: flex;
