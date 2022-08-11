@@ -9,6 +9,7 @@ Created on Wed Jun 15 13:37:46 2022
 REDIRECT_OUTPUT = True
 import os
 os.environ['FLASK_APP'] = 'i_SpeakR_gui'
+os.environ["FLASK_RUN_PORT"] = '443'
 from flask import url_for, request, Flask, render_template
 import webbrowser
 import datetime
@@ -39,8 +40,10 @@ app = Flask(__name__)
 output_path = os.getcwd() + '/../i-SpeakR_GUI_output/'
 if not os.path.exists(output_path):
     os.makedirs(output_path)
-app.config['UPLOAD_FOLDER'] = output_path + '/data/'
-app.config['MAX_CONTENT-PATH'] = 53687091200
+UPLOAD_FOLDER = output_path + '/data/'
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+MAX_CONTENT_PATH = 53687091200
 data_path_ = ''
 
 
@@ -49,7 +52,8 @@ data_path_ = ''
 def landing_page():
     if REDIRECT_OUTPUT:
         sys.stdout = open('static/output.txt', 'w')
-    datasets_ = next(os.walk(app.config['UPLOAD_FOLDER']))[1]
+    print(f'UPLOAD_FOLDER={UPLOAD_FOLDER}')
+    datasets_ = next(os.walk(UPLOAD_FOLDER))[1]
     print(f'datasets_={datasets_}')
     style_url_ = url_for('static', filename='style.css')
     return render_template('data_upload.html', style=style_url_, datasets=datasets_)
@@ -65,17 +69,17 @@ def upload_dataset():
     if request.method == 'POST':
         if request.form['available_datasets']=="other":
             for f_ in request.files.getlist('file[]'):
-                path_ = '/'.join(os.path.join(app.config['UPLOAD_FOLDER'], f_.filename).split('/')[:-1]) + '/'
+                path_ = '/'.join(os.path.join(UPLOAD_FOLDER, f_.filename).split('/')[:-1]) + '/'
                 if not os.path.exists(path_):
                     os.makedirs(path_)
                 print(f"path_={path_} filename={secure_filename(f_.filename.split('/')[-1])}")
                 f_.save(os.path.join(path_, f_.filename.split('/')[-1]))
                 dataset_name_ = f_.filename.split('/')[0]
-                data_path_ = app.config['UPLOAD_FOLDER'] + '/' + dataset_name_ + '/'
+                data_path_ = UPLOAD_FOLDER + '/' + dataset_name_ + '/'
             print('Files uploaded successfully')
         else:
             dataset_name_ = request.form['available_datasets']
-            data_path_ = app.config['UPLOAD_FOLDER'] + '/' + dataset_name_ + '/'
+            data_path_ = UPLOAD_FOLDER + '/' + dataset_name_ + '/'
     
     global data_type_
     data_type_ = []
@@ -380,9 +384,8 @@ def run_toolkit(CFG, metaobj):
 
 
 if __name__ == '__main__':
-    # app.run()
-    context = ('certificate.pem', 'privateKey.pem')
-    app.run(host="0.0.0.0", debug=True, port=5000, ssl_context=context)
-    # app.run(host="127.0.0.1", debug=True, port=5000)
+# 	context = ('flaskssl/1f9476e3959ebe60.crt', 'flaskssl/star_iitdh_key.key')
+# 	app.run(host="0.0.0.0", debug=True, port=443, ssl_context=context)
+    app.run(host="127.0.0.1", debug=True, port=5000)
 
     

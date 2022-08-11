@@ -1,1 +1,2 @@
-data_type:  ['infer']
+UPLOAD_FOLDER=/home/mrinmoy/Documents/Speaker_Recognition_MeitY_Project/Project_Related/Hands_on/i-SpeakR_GUI/../i-SpeakR_GUI_output//data/
+datasets_=['Test_Dataset']

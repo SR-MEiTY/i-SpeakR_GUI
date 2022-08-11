@@ -57,16 +57,17 @@ div {
 }
 .dashboard{
 	width: 100vw;
+	padding: 0px 0px 50px 0px;
 }
 .content_space{
 	width: 95vw;
-	padding-top: 25px;
+	padding-top: 5px;
 }
 .heading1{
 	font-family: "Sofia", sans-serif;
 	font-weight: bold;
 	font-size: 50px;
-	padding: 5px 10px 10px 10px;
+	padding: 3px 10px 3px 10px;
 	color: gray;
 	display: block;	
 }
@@ -74,7 +75,7 @@ div {
 	font-family: "Sofia", sans-serif;
 	font-weight: bold;
 	font-size: 50px;
-	padding: 5px 10px 10px 10px;
+	padding: 3px 10px 3px 10px;
 	color: gray;
 	display: block;
 	text-align: right;
@@ -83,7 +84,7 @@ div {
 	font-family: 'Josefin Sans', sans-serif;
 	font-weight: bold;
 	font-size: 25px;
-	padding: 5px 0px 10px 0px;
+	padding: 3px 0px 3px 0px;
 	color: gray;
 	display: block;
 	text-align: center;
@@ -93,8 +94,8 @@ div {
 	cursor: pointer;
 }
 .subsection{
-	padding-top: 25px;
-	padding-bottom: 25px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -111,11 +112,15 @@ li:hover{
 	text-justify: inter-word;
 }
 .footer{
+	position: relative;
+	bottom: 0px;
 	width: 100vw;
 	height: 25px;
-	border-top: 3px solid gray;
+	border-top: 3px solid transparent;
 	text-align: center;
 	justify-content: center;
+	background-color: rgba(91, 171, 91, 1);
+	color: white;
 }
 .display_tablet{
 	text-align: center;
@@ -136,6 +141,32 @@ li:hover{
 	color: white;
 	background-color: rgba(38, 81, 145,1);
 }
+/*
+.display_tablet{
+	display: flex;
+	align-items: center;
+	text-align: center;
+	width: 200px;
+	height: 100px;
+	word-wrap: break-word;
+	font-weight: 900;
+	color: white;
+	font-size: 20px;
+	border-radius: 10px;
+	box-shadow: 1px 1px 3px 1px grey;
+	background-color: #171717;
+	opacity: 1;
+	background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #171717 17px ), repeating-linear-gradient( #676b6855, #676b68 );
+}
+.display_tablet:hover{
+	box-shadow: 3px 3px 5px 3px grey;
+	font-weight: 900;
+	color: black;
+	background-color: #c7cc46;
+	opacity: 1;
+	background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #c7cc46 17px ), repeating-linear-gradient( #2f914d55, #2f914d );
+}
+*/
 .logo_shadow{
 	border-radius: 15px; 
 	border: 3px solid #EEE;
